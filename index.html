@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<!--
+  랜딩 스타터 · 두온교육 「강의 사이트 제작 노하우」 참가자 키트
+  오르리의 AI 동화 만들기 · 성인·시니어 대상 3시간 실습
+  외부 파일 없음 · 정적 호스팅(Vercel · GitHub Pages)에서 그대로 동작
+-->
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>오르리의 AI 동화 만들기 · 3시간 실습 강의</title>
+<meta name="description" content="성인과 시니어를 위한 AI 동화 기획·집필·이미지 제작 실습 · 2026년 10월 4일 오후 6시~9시">
+<meta name="theme-color" content="#111111">
+<!-- 카카오톡·SNS 공유 미리보기 · og:image는 1200x630 이미지 절대 주소 -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="오르리의 AI 동화 만들기">
+<meta property="og:description" content="성인·시니어 대상 · 2026년 10월 4일 오후 6시~9시 · AI 동화 1편 완성">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{
+  --bg:#F4F4F3; --paper:#FFFFFF; --ink:#111111; --sub:#555555; --soft:#F7F7F6;
+  --line:rgba(0,0,0,.14); --accent:#111111; --accent-ink:#FFFFFF;
+  --shadow:0 8px 24px rgba(0,0,0,.10), 0 2px 5px rgba(0,0,0,.06);
+  --shadow-hover:0 14px 32px rgba(0,0,0,.16), 0 3px 8px rgba(0,0,0,.08);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#121212; --paper:#1D1D1D; --ink:#F2F2F2; --sub:#B5B5B5; --soft:#262626;
+    --line:rgba(255,255,255,.18);
+    --shadow:0 8px 24px rgba(0,0,0,.5), 0 2px 5px rgba(0,0,0,.4);
+    --shadow-hover:0 14px 32px rgba(0,0,0,.6), 0 3px 8px rgba(0,0,0,.45);
+  }
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:'Pretendard Variable',Pretendard,-apple-system,'Malgun Gothic',sans-serif;
+  line-height:1.65;-webkit-text-size-adjust:100%;word-break:keep-all;overflow-wrap:anywhere;overflow-x:hidden}
+h1,h2,h3{text-wrap:balance;letter-spacing:0}
+p,li{text-wrap:pretty}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.skip{position:absolute;left:-999px;top:0;background:var(--ink);color:var(--bg);padding:.6rem 1rem;z-index:10}
+.skip:focus{left:1rem}
+
+.wrap{max-width:52rem;margin:0 auto;padding:0 1.2rem}
+section{padding:2.6rem 0}
+.sec-kicker{font-size:.78rem;font-weight:800;letter-spacing:.18em;color:var(--sub);margin-bottom:.4rem}
+h2{font-size:clamp(1.35rem,3.6vw,1.7rem);font-weight:900;margin-bottom:1rem}
+
+/* 히어로: 머스타드 옐로 */
+.hero{background:var(--accent);color:var(--accent-ink);text-align:center;padding:4.2rem 0 3.6rem}
+.hero .kicker{font-size:.85rem;font-weight:800;letter-spacing:.3em}
+.hero h1{font-size:clamp(2rem,7vw,3.2rem);font-weight:900;line-height:1.25;margin-top:.8rem}
+.hero h1::after{content:'';display:block;width:3.4rem;height:3px;background:#FFFFFF;margin:1.2rem auto 0}
+.hero .lead{font-size:1.05rem;font-weight:600;color:#D5D5D5;margin-top:1rem}
+.meta{display:flex;justify-content:center;gap:.5rem;flex-wrap:wrap;margin-top:1.2rem}
+.meta span{border:1.5px solid #FFFFFF;border-radius:99px;padding:.35rem 1rem;font-size:.9rem;font-weight:700}
+.cta{display:flex;justify-content:center;gap:.7rem;flex-wrap:wrap;margin-top:1.8rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;min-height:48px;padding:0 1.4rem;border-radius:999px;
+  font:inherit;font-size:1rem;font-weight:800;text-decoration:none;cursor:pointer;border:2px solid #FFFFFF}
+.btn.primary{background:#FFFFFF;color:#111111}
+.btn.primary:hover{background:#E5E5E5}
+.btn.ghost{background:transparent;color:#FFFFFF}
+.btn.ghost:hover{background:rgba(255,255,255,.14)}
+.hero :focus-visible{outline-color:#FFFFFF}
+
+/* 표 */
+table.tbl{width:100%;border-collapse:separate;border-spacing:0;background:var(--paper);box-shadow:var(--shadow);border-radius:.8rem;overflow:hidden}
+table.tbl th, table.tbl td{padding:.75rem 1rem;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+table.tbl tbody tr:last-child th, table.tbl tbody tr:last-child td{border-bottom:none}
+table.tbl thead th{background:#111111;color:#FFFFFF;font-weight:800}
+table.tbl tbody th{width:7.5rem;color:var(--sub);font-weight:700;white-space:nowrap}
+
+/* 커리큘럼 카드 */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+@media (max-width:720px){.cards{grid-template-columns:1fr}}
+.card{background:var(--paper);border-radius:.8rem;box-shadow:var(--shadow);padding:1.2rem 1.2rem 1.3rem;display:flex;flex-direction:column;gap:.35rem}
+.card .n{font-size:.75rem;font-weight:800;letter-spacing:.14em;color:var(--sub)}
+.card .t{font-size:1.1rem;font-weight:900}
+.card ul{list-style:none;display:flex;flex-direction:column;gap:.2rem;font-size:.92rem;color:var(--sub)}
+.card li::before{content:'· '}
+
+/* 강사 소개 */
+.profile{display:flex;gap:1.2rem;align-items:flex-start;background:var(--paper);border-radius:.8rem;box-shadow:var(--shadow);padding:1.3rem}
+.avatar{flex:0 0 auto;width:4.4rem;height:4.4rem;border-radius:50%;background:var(--accent);color:#111111;display:flex;align-items:center;justify-content:center;
+  font-size:1.6rem;font-weight:900}
+.profile .name{font-size:1.15rem;font-weight:900}
+.profile .role{font-size:.9rem;color:var(--sub);font-weight:600}
+.profile ul{margin-top:.5rem;padding-left:1.1rem;font-size:.93rem;display:flex;flex-direction:column;gap:.15rem}
+@media (max-width:520px){.profile{flex-direction:column}}
+
+/* 입장 카드 */
+.entry-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media (max-width:640px){.entry-grid{grid-template-columns:1fr}}
+.entry{background:var(--paper);border-radius:.8rem;box-shadow:var(--shadow);padding:1.1rem 1.2rem;text-decoration:none;min-height:44px;
+  display:flex;flex-direction:column;gap:.25rem;transition:box-shadow .15s,transform .15s}
+.entry:hover{box-shadow:var(--shadow-hover);transform:translateY(-2px)}
+.entry .part{font-size:.75rem;font-weight:800;letter-spacing:.14em;color:var(--sub)}
+.entry .title{font-size:1.05rem;font-weight:900}
+.entry .desc{font-size:.88rem;color:var(--sub)}
+
+/* 프롬프트 목록 */
+.phead{display:flex;justify-content:space-between;align-items:center;gap:.8rem;flex-wrap:wrap;margin-bottom:.4rem}
+.phead h2{margin-bottom:0}
+.pnote{font-size:.9rem;color:var(--sub);margin-bottom:.9rem}
+.plist{list-style:none;display:flex;flex-direction:column;gap:.8rem;counter-reset:p}
+.pitem{background:var(--paper);border-radius:.8rem;box-shadow:var(--shadow);padding:1rem 1.1rem;display:flex;flex-direction:column;gap:.5rem;counter-increment:p}
+.pitem .pt{font-size:1rem;font-weight:900}
+.pitem .pt::before{content:counter(p) ". "}
+.pitem .px{font-size:.92rem;line-height:1.65;white-space:pre-wrap;background:var(--soft);border-left:4px solid var(--ink);border-radius:.4rem;padding:.7rem .9rem}
+.pbtn{align-self:flex-start;display:inline-flex;align-items:center;justify-content:center;min-height:44px;min-width:44px;padding:0 1.1rem;border-radius:999px;
+  border:1.5px solid var(--ink);background:var(--ink);color:var(--bg);font:inherit;font-size:.9rem;font-weight:800;cursor:pointer}
+.pbtn:hover{opacity:.85}
+.pbtn.ghost{background:transparent;color:var(--ink)}
+.pstatus{font-size:.9rem;font-weight:700;min-height:1.4em;text-align:center;margin-top:.6rem}
+
+footer{border-top:1px solid var(--line);padding:1.6rem 0 2.4rem;font-size:.85rem;color:var(--sub);text-align:center;line-height:1.8}
+footer nav{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-bottom:.4rem}
+footer nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 .3rem;font-weight:700}
+
+@media (prefers-reduced-motion:reduce){ .entry{transition:none} .entry:hover{transform:none} }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">본문 바로가기</a>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">오르리 AI · 창작 실습</div>
+    <h1>오르리의 AI 동화 만들기</h1>
+    <p class="lead">성인·시니어를 위한 기획부터 이미지 완성까지 · 3시간 실습</p>
+    <div class="meta"><span>2026년 10월 4일 일요일</span><span>오후 6시~9시</span><span>강사 오르리 AI</span></div>
+    <div class="cta">
+      <a class="btn primary" href="slides.html" target="_blank" rel="noopener">슬라이드 입장</a>
+      <a class="btn ghost" href="#prompts">실습 프롬프트</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section id="info" aria-labelledby="infoTitle">
+    <div class="wrap">
+      <div class="sec-kicker">대상 · 일정</div>
+      <h2 id="infoTitle">대상과 일정</h2>
+      <table class="tbl">
+        <tbody>
+          <tr><th scope="row">대상</th><td>AI 동화 창작을 배우고 싶은 성인·시니어</td></tr>
+          <tr><th scope="row">일시</th><td>2026년 10월 4일 일요일 오후 6시~9시 · 총 3시간</td></tr>
+          <tr><th scope="row">장소</th><td>별도 안내</td></tr>
+          <tr><th scope="row">준비물</th><td>인터넷 가능한 노트북 · 크롬 브라우저 · AI 서비스 계정</td></tr>
+          <tr><th scope="row">결과물</th><td>이야기 원고와 이미지로 구성한 AI 동화 초안 1편</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="curriculum" aria-labelledby="curTitle">
+    <div class="wrap">
+      <div class="sec-kicker">커리큘럼</div>
+      <h2 id="curTitle">3단계 창작 과정</h2>
+      <div class="cards">
+        <article class="card"><div class="n">1부 · 오후 6:00~6:50</div><h3 class="t">동화 기획</h3><ul><li>독자·주제·교훈 설정</li><li>AI 소재 생성과 최종 아이디어 선택</li></ul></article>
+        <article class="card"><div class="n">2부 · 오후 7:00~7:50</div><h3 class="t">이야기 설계</h3><ul><li>줄거리·캐릭터·배경 구성</li><li>8~12개 장면 분할과 문체 설정</li></ul></article>
+        <article class="card"><div class="n">3부 · 오후 8:00~9:00</div><h3 class="t">이미지와 완성</h3><ul><li>스타일 스킬·캐릭터·장면 이미지</li><li>페이지 조합·최종 점검·결과 공유</li></ul></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="instructor" aria-labelledby="insTitle">
+    <div class="wrap">
+      <div class="sec-kicker">강사 소개</div>
+      <h2 id="insTitle">강사 오르리 AI</h2>
+      <div class="profile">
+        <div class="avatar" aria-hidden="true">오</div>
+        <div>
+          <div class="name">오르리 AI</div>
+          <div class="role">AI 동화 창작 교육</div>
+          <ul>
+            <li>어린이에게 창의적인 동화 세상과 성장 경험 제공</li>
+            <li>AI 동화 창작으로 성인의 상상력 확장</li>
+            <li>더 나은 AI 활용과 창의적 표현 역량 지원</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="prompts" aria-labelledby="pTitle">
+    <div class="wrap">
+      <div class="phead">
+        <h2 id="pTitle">자료와 실습 프롬프트</h2>
+        <button type="button" class="pbtn ghost" id="dlTxt">전체 받기 (TXT)</button>
+      </div>
+      <p class="pnote">대괄호 안을 내 이야기로 바꿔서 사용 · 슬라이드와 같은 핵심 프롬프트</p>
+      <ol class="plist" id="plist"></ol>
+      <p class="pstatus" id="pStatus" role="status" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <section id="enter" aria-labelledby="enterTitle">
+    <div class="wrap">
+      <div class="sec-kicker">수업 페이지</div>
+      <h2 id="enterTitle">슬라이드 입장</h2>
+      <div class="entry-grid">
+        <a class="entry" href="slides.html" target="_blank" rel="noopener">
+          <span class="part">총 54장</span>
+          <span class="title">웹슬라이드 열기 →</span>
+          <span class="desc">좌우 이동 · G 전체보기 · P PDF 저장</span>
+        </a>
+        <a class="entry" href="#prompts">
+          <span class="part">실습 자료</span>
+          <span class="title">프롬프트 다시 보기 →</span>
+          <span class="desc">복사와 TXT 내려받기</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <nav aria-label="바닥글 링크">
+      <a href="slides.html" target="_blank" rel="noopener">슬라이드</a>
+      <a href="#prompts">실습 프롬프트</a>
+    </nav>
+    <p>오르리의 AI 동화 만들기 · 강사 오르리 AI</p>
+    <p>ⓒ 2026 오르리 AI</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* 프롬프트 목록 · 슬라이드 프롬프트 카드와 같은 내용으로 유지 */
+  var PROMPTS = [
+    { title: '동화 소재 생성',
+      text: '너는 어린이 동화 기획자야.\n[독자 연령]을 위한 [주제] 동화 소재 3개를 제안해줘.\n- 각 소재: 주인공, 장소, 사건, 교훈\n- 분위기: [따뜻함·유쾌함·신비로움 중 선택]\n- 조건: 기존 유명 동화와 겹치지 않는 설정' },
+    { title: '줄거리 생성',
+      text: '너는 어린이 동화 작가야.\n내가 선택한 소재를 4단계 줄거리로 확장해줘.\n- 독자: [연령]\n- 소재: [선택한 소재]\n- 주제: [핵심 주제]\n- 조건: 주인공의 선택으로 문제 해결, 교훈의 직접 설명 제외' },
+    { title: '스타일 스킬 활용',
+      text: 'aitoon-storybook 스킬로 아래 동화를 제작해줘.\n- 스토리: [줄거리]\n- 스타일 템플릿: 작업 폴더의 JSON 사용\n- 글자: 기본\n- 표정 연기: OFF\n- 조건: 캐릭터와 모든 페이지에 같은 화풍 유지' },
+    { title: '캐릭터 이미지',
+      text: '어린이 동화책 주인공 캐릭터 시트.\n[외모], [의상], [소품], [성격이 드러나는 표정].\n정면·측면·뒷면과 기쁨·걱정·놀람 표정.\n[선택한 화풍], 흰 배경, 전신, 같은 비율과 색상.' },
+    { title: '장면 이미지',
+      text: '참고 캐릭터와 같은 주인공이 등장하는 어린이 동화책 삽화.\n장면: [장면 번호와 핵심 행동]\n배경: [시간·장소], 감정: [표정·몸짓], 구도: [화면 범위와 시점]\n캐릭터 외모·의상·소품과 [선택한 화풍] 유지.' }
+  ];
+
+  var list = document.getElementById('plist');
+  var status = document.getElementById('pStatus');
+  function say(m){ status.textContent = m; clearTimeout(say.t); say.t = setTimeout(function(){ status.textContent = ''; }, 2000); }
+
+  /* 복사: clipboard API가 700ms 안에 끝나지 않으면 textarea 폴백 · 완료 표시는 한 번만 */
+  function copy(text, btn){
+    var settled = false;
+    function done(){
+      if (settled) return;
+      settled = true;
+      btn.textContent = '복사됨 ✓';
+      say('복사 완료');
+      setTimeout(function(){ btn.textContent = '복사'; }, 1500);
+    }
+    function fallback(){
+      var ta = document.createElement('textarea');
+      ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); } catch (e) { /* 구형 브라우저 · 무시 */ }
+      ta.remove(); done();
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      setTimeout(function(){ if (!settled) fallback(); }, 700);
+      navigator.clipboard.writeText(text).then(done).catch(fallback);
+    } else {
+      fallback();
+    }
+  }
+
+  function download(name, text){
+    var blob = new Blob(['﻿' + text], { type: 'text/plain;charset=utf-8' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob); a.download = name;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(a.href); }, 1000);
+    say(name + ' 받기 완료');
+  }
+
+  PROMPTS.forEach(function(p){
+    var li = document.createElement('li'); li.className = 'pitem';
+    var t = document.createElement('div'); t.className = 'pt'; t.textContent = p.title;
+    var x = document.createElement('div'); x.className = 'px'; x.textContent = p.text;
+    var c = document.createElement('button'); c.type = 'button'; c.className = 'pbtn'; c.textContent = '복사';
+    c.setAttribute('aria-label', p.title + ' 프롬프트 복사');
+    c.addEventListener('click', function(){ copy(p.text, c); });
+    li.appendChild(t); li.appendChild(x); li.appendChild(c);
+    list.appendChild(li);
+  });
+
+  document.getElementById('dlTxt').addEventListener('click', function(){
+    var out = '오르리의 AI 동화 만들기 실습 프롬프트 ' + PROMPTS.length + '종\n대괄호 안을 내 이야기로 바꿔서 사용\n\n' + PROMPTS.map(function(p, i){
+      return '========================================\n' + (i + 1) + '. ' + p.title + '\n========================================\n' + p.text + '\n';
+    }).join('\n');
+    download('오르리_AI동화_실습프롬프트_' + PROMPTS.length + '종.txt', out);
+  });
+})();
+</script>
+</body>
+</html>
